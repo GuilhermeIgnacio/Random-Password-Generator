@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Password Generator</string>
+    <string name="fab_content_desc" />
+    <string name="password_generator">Password Generator</string>
+    <string name="include_uppercase_letters">Include Uppercase Letters</string>
+    <string name="include_lowercase_letters">Include Lowercase Letters</string>
+    <string name="include_numbers">Include Numbers</string>
+    <string name="include_symbols">Include Symbols</string>
+    <string name="generate"><![CDATA[Generate ->]]></string>
+</resources>

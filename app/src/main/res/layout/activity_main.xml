@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/password_generator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/passwordField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+
+        <TextView
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:text="Generated Password Here"
+            app:layout_constraintEnd_toStartOf="@id/floating_action_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_action_button"
+            style="?attr/floatingActionButtonSmallStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/fab_content_desc"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/password"
+            app:srcCompat="@drawable/copy_to_clipboard" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <CheckBox
+        android:id="@+id/upLetters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/include_uppercase_letters"
+        app:layout_constraintTop_toBottomOf="@id/passwordField"
+
+        />
+
+    <CheckBox
+        android:id="@+id/lowLetters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/include_lowercase_letters"
+        app:layout_constraintTop_toBottomOf="@id/upLetters"
+
+        />
+
+    <CheckBox
+        android:id="@+id/numbers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/include_numbers"
+        app:layout_constraintTop_toBottomOf="@id/lowLetters"
+
+        />
+
+    <CheckBox
+        android:id="@+id/symbols"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/include_symbols"
+        app:layout_constraintTop_toBottomOf="@id/numbers"
+
+        />
+
+    <Button
+        android:id="@+id/generatePasswordBtn"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/generate"
+        app:layout_constraintTop_toBottomOf="@id/symbols"
+
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
