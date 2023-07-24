@@ -25,6 +25,7 @@
 
         <TextView
             android:id="@+id/password"
+            android:textIsSelectable="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="15dp"
@@ -82,6 +83,38 @@
 
         />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/passwordLengthLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/symbols"
+
+        >
+
+        <TextView
+            android:id="@+id/passwordLength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Length:"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="16"
+        android:min="1"
+        android:progress="8"
+        app:layout_constraintTop_toBottomOf="@id/passwordLengthLayout"
+        />
+
     <Button
         android:id="@+id/generatePasswordBtn"
         style="?attr/materialButtonOutlinedStyle"
@@ -89,9 +122,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:text="@string/generate"
-        app:layout_constraintTop_toBottomOf="@id/symbols"
+        app:layout_constraintTop_toBottomOf="@id/seekBar"
 
         />
+
+
+
 
 
 
