@@ -1,7 +1,11 @@
 package com.example.passwordgenerator
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
 import android.widget.SeekBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.passwordgenerator.databinding.ActivityMainBinding
 import kotlin.random.Random
@@ -132,10 +136,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    val grp = GenerateRandomPassword()
+    private val grp = GenerateRandomPassword()
 
 
-     fun generatePassword() {
+    private fun generatePassword() {
         //val password = grp.generateRandomPassword(viewBinding.seekBar.progress)
          val allBoxesChecked =
              viewBinding.lowLetters.isChecked
@@ -186,6 +190,16 @@ class MainActivity : AppCompatActivity() {
         viewBinding.password.text = password
     }
 
+    private fun copyToClipboard() {
+        val textToCopy = viewBinding.password.text
+
+        val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipdata = ClipData.newPlainText("text",textToCopy)
+        clipboardManager.setPrimaryClip(clipdata)
+
+        Toast.makeText(this,R.string.toast_text_copied_to_clipboard,Toast.LENGTH_LONG).show()
+    }
+
 
 
     private lateinit var viewBinding: ActivityMainBinding
@@ -200,15 +214,26 @@ class MainActivity : AppCompatActivity() {
 
         seekBar = viewBinding.seekBar
 
+
+
         viewBinding.generatePasswordBtn.setOnClickListener{
-            generatePassword()
+
+            val uppercaseBox = viewBinding.upLetters.isChecked
+            val lowercaseBox = viewBinding.lowLetters.isChecked
+            val numbersBox = viewBinding.numbers.isChecked
+            val symbolsBox = viewBinding.symbols.isChecked
+
+            if (uppercaseBox || lowercaseBox || numbersBox || symbolsBox) {
+                generatePassword()
+            } else {
+                Toast.makeText(this, R.string.toast_text, Toast.LENGTH_SHORT).show()
+            }
+
         }
-
-
 
         seekBar.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, user: Boolean) {
-                viewBinding.passwordLength.text = "$progress"
+                viewBinding.passwordLengthSize.text = "$progress"
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -220,6 +245,10 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        viewBinding.floatingActionButton.setOnClickListener{
+            copyToClipboard()
+        }
 
     }
 }

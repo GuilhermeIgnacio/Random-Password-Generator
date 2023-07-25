@@ -7,4 +7,7 @@
     <string name="include_numbers">Include Numbers</string>
     <string name="include_symbols">Include Symbols</string>
     <string name="generate"><![CDATA[Generate ->]]></string>
+
+    <string name="toast_text">At Least One Box Must Be Checked To generate A Password</string>
+    <string name="toast_text_copied_to_clipboard"> Text Copied To Clipboard! </string>
 </resources>
