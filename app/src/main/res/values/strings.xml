@@ -8,6 +8,9 @@
     <string name="include_symbols">Include Symbols</string>
     <string name="generate"><![CDATA[Generate ->]]></string>
 
-    <string name="toast_text">At Least One Box Must Be Checked To generate A Password</string>
+    <string name="toast_text">At Least One Box Must Be Checked To generate a Password</string>
     <string name="toast_text_copied_to_clipboard"> Text Copied To Clipboard! </string>
+    <string name="toast_text_failed_to_copy_to_clipboard">Please Generate a Random Password Before Trying to Copy.</string>
+    <string name="generated_password_here">Generated Password Here</string>
+    <string name="length">Length:</string>
 </resources>

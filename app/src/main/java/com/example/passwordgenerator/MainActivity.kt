@@ -138,7 +138,6 @@ class MainActivity : AppCompatActivity() {
 
     private val grp = GenerateRandomPassword()
 
-
     private fun generatePassword() {
         //val password = grp.generateRandomPassword(viewBinding.seekBar.progress)
          val allBoxesChecked =
@@ -202,8 +201,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-
     private lateinit var viewBinding: ActivityMainBinding
     private lateinit var seekBar: SeekBar
 
@@ -249,7 +246,14 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewBinding.floatingActionButton.setOnClickListener{
-            copyToClipboard()
+
+            val text = "Generated Password Here"
+
+            if (viewBinding.password.text == text) {
+                Toast.makeText(this, R.string.toast_text_failed_to_copy_to_clipboard, Toast.LENGTH_LONG).show()
+            } else {
+                copyToClipboard()
+            }
         }
 
     }
