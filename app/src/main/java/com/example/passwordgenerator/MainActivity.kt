@@ -191,13 +191,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun copyToClipboard() {
-        val textToCopy = viewBinding.password.text
 
-        val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clipdata = ClipData.newPlainText("text",textToCopy)
-        clipboardManager.setPrimaryClip(clipdata)
+            val textToCopy = viewBinding.password.text
 
-        Toast.makeText(this,R.string.toast_text_copied_to_clipboard,Toast.LENGTH_LONG).show()
+            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipdata = ClipData.newPlainText("text", textToCopy)
+            clipboardManager.setPrimaryClip(clipdata)
+
+            Toast.makeText(this, R.string.toast_text_copied_to_clipboard, Toast.LENGTH_LONG).show()
+
     }
 
 
