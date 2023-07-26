@@ -8,133 +8,11 @@ import android.widget.SeekBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.passwordgenerator.databinding.ActivityMainBinding
+import kotlinx.coroutines.delay
+import java.time.Duration
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
-
-    class GenerateRandomPassword {
-
-        fun generateRandomPassword(length: Int) : String {
-             val charPool : List<Char> = ('a'..'z') + ('A'..'Z')+ ('0'..'9') + ('!'..'/')
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-
-        }
-
-        fun generateRandomPasswordUppercase(length: Int) : String {
-            val charPool : List<Char> = ('A'..'Z').toList()
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-        fun generateRandomPasswordLowerCase(length: Int) : String{
-            val charPool : List<Char> = ('a'..'z').toList()
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-        fun generateRandomPasswordSymbols(length: Int) : String{
-            val charPool : List<Char> = ('!'..'/').toList()
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-        fun generateRandomPasswordNumbers(length: Int) : String{
-            val charPool : List<Char> = ('0'..'9').toList()
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-        fun generateRandomPasswordUppercaseLowercaseNumbers(length: Int) : String {
-            val charPool : List<Char> = ('a'..'z') + ('A'..'Z')+ ('0'..'9')
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-        fun generateRandomPasswordUppercaseLowercaseSymbols(length: Int) : String {
-            val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('!'..'/')
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-        fun generateRandomPasswordUppercaseLowercase(length: Int) : String {
-            val charPool : List<Char> = ('a'..'z') + ('A'..'Z')
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-        fun generateRandomPasswordUppercaseNumbers(length: Int) : String{
-            val charPool : List<Char> = ('A'..'Z') + ('0'..'9')
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-        fun generateRandomPasswordUppercaseSymbols(length: Int) : String{
-            val charPool : List<Char> = ('A'..'Z') + ('!'..'/')
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-        fun generateRandomPasswordUppercaseNumberSymbols(length: Int) : String{
-            val charPool : List<Char> = ('A'..'Z') + ('0'..'9') + ('!'..'/')
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-        fun generateRandomPasswordLowercaseNumbersSymbols(length: Int) : String{
-            val charPool : List<Char> = ('a'..'z') + ('0'..'9') + ('!'..'/')
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-        fun generateRandomPasswordLowercaseNumbers(length: Int) : String{
-            val charPool : List<Char> = ('a'..'z') + ('0'..'9')
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-        fun generateRandomPasswordLowercaseSymbols(length: Int) : String {
-            val charPool : List<Char> = ('a'..'z') + ('!'..'/')
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-        fun generateRandomPasswordNumbersSymbols(length: Int) : String {
-            val charPool : List<Char> = ('0'..'9') + ('!'..'/')
-            return (1..length)
-                .map { Random.nextInt(0, charPool.size) }
-                .map ( charPool::get )
-                .joinToString("")
-        }
-
-    }
 
     private val grp = GenerateRandomPassword()
 
@@ -224,6 +102,7 @@ class MainActivity : AppCompatActivity() {
 
             if (uppercaseBox || lowercaseBox || numbersBox || symbolsBox) {
                 generatePassword()
+                //Toast.makeText(this, viewBinding.password.text, Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this, R.string.toast_text, Toast.LENGTH_SHORT).show()
             }
@@ -248,8 +127,10 @@ class MainActivity : AppCompatActivity() {
         viewBinding.floatingActionButton.setOnClickListener{
 
             val text = "Generated Password Here"
+            val passwordText = (viewBinding.password.text).toString()
 
-            if (viewBinding.password.text == text) {
+
+            if ( passwordText == text) {
                 Toast.makeText(this, R.string.toast_text_failed_to_copy_to_clipboard, Toast.LENGTH_LONG).show()
             } else {
                 copyToClipboard()
